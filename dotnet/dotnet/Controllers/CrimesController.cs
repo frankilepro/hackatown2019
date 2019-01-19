@@ -19,6 +19,14 @@ namespace dotnet.Controllers
             _crimesService = crimesService;
         }
 
+        [HttpGet]
+        public ActionResult<IEnumerable<Position>> Get()
+        {
+            return _crimesService.Crimes
+                .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
+                .ToList();
+        }
+
         // GET api/values
         [HttpGet("{year}/{month}")]
         public ActionResult<IEnumerable<Position>> Get(int year, int month)

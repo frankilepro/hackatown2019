@@ -13,7 +13,7 @@ const CustomMap = withScriptjs(withGoogleMap((props: any) => {
   const data = props.data.map((x: any) => new window.google.maps.LatLng(x.lat, x.lng));
   return (
     <GoogleMap
-      defaultZoom={15}
+      defaultZoom={11}
       defaultCenter={montrealPos}
     >
       {/* <Marker position={montrealPos} /> */}
