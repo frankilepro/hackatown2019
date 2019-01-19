@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotnet.Models;
 using dotnet.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ namespace dotnet.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Crime>> Get()
         {
             return _crimesService.GetValues();
         }

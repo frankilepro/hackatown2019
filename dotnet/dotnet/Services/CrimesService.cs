@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using dotnet.Models;
@@ -10,23 +11,35 @@ namespace dotnet.Services
 {
     public class CrimesService
     {
-        private List<string> _values;
+        private List<Crime> _crimes;
 
         public CrimesService()
         {
-            using (var reader = new StreamReader("interventionscitoyendo.csv"))
+            using (var reader = new StreamReader("interventionscitoyendo.csv", Encoding.GetEncoding("ISO-8859-1")))
             {
                 using (var csv = new CsvReader(reader))
                 {
-                    var records = csv.GetRecords<Crime>();
+                    _crimes = new List<Crime>();
+                    while (csv.Read())
+                    {
+                        try
+                        {
+                            var record = csv.GetRecord<Crime>();
+                            _crimes.Add(record);
+                        }
+                        catch
+                        {
+                            // ignored
+                        }
+
+                    }
                 }
             }
-            _values = new List<string>() { "a", "l", "l", "o" };
         }
 
-        public List<string> GetValues()
+        public List<Crime> GetValues()
         {
-            return _values;
+            return _crimes;
         }
     }
 }
