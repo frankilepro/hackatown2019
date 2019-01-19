@@ -20,10 +20,13 @@ namespace dotnet.Controllers
         }
 
         // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<Crime>> Get()
+        [HttpGet("{year}/{month}")]
+        public ActionResult<IEnumerable<Position>> Get(int year, int month)
         {
-            return _crimesService.GetValues();
+            return _crimesService.Crimes
+                .Where(x => x.Date.Year == year && x.Date.Month == month)
+                .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
+                .ToList();
         }
     }
 }
