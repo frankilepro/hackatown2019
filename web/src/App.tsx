@@ -1,9 +1,9 @@
 import { observable } from 'mobx';
-import { observer }  from 'mobx-react';
+import { observer } from 'mobx-react';
 import * as React from 'react';
 import './App.css';
 
-import Lol from './components/Lol';
+import Buttons from './components/Buttons';
 import logo from './logo.svg';
 
 @observer
@@ -25,7 +25,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Lol/>
+        <Buttons />
       </div>
     );
   }
