@@ -19,6 +19,7 @@ namespace dotnet.Controllers
             _crimesService = crimesService;
         }
 
+        // GET api/crimes
         [HttpGet]
         public ActionResult<IEnumerable<Position>> Get()
         {
@@ -27,12 +28,22 @@ namespace dotnet.Controllers
                 .ToList();
         }
 
-        // GET api/values
+        // GET api/crimes/{year}/{month}
         [HttpGet("{year}/{month}")]
         public ActionResult<IEnumerable<Position>> Get(int year, int month)
         {
             return _crimesService.Crimes
                 .Where(x => x.Date.Year == year && x.Date.Month == month)
+                .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
+                .ToList();
+        }
+
+        // GET api/crimes/{year}
+        [HttpGet("{year}")]
+        public ActionResult<IEnumerable<Position>> Get(int year)
+        {
+            return _crimesService.Crimes
+                .Where(x => x.Date.Year == year)
                 .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
                 .ToList();
         }

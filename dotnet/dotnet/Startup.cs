@@ -29,8 +29,7 @@ namespace dotnet
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var crimesService = new CrimesService();
-            services.AddSingleton(crimesService);
+            services.AddSingleton(new CrimesService());
 
             services.AddCors(options =>
             {
