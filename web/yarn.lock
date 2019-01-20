@@ -205,6 +205,13 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@fullpage/react-fullpage@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@fullpage/react-fullpage/-/react-fullpage-0.1.10.tgz#c7c15ea2cff8cd7f58b8ba3ac0e75d76ce3b83e1"
+  integrity sha512-VDgrIsmntMvHVo+p+UcO60UY3/pQfPDipqbY31uJK7CzeTslGY1TqIe/XPfzH1dDr3HgXvG2gPQMGOh07Xko/A==
+  dependencies:
+    fullpage.js "^3.0.4"
+
 "@material-ui/core@^3.9.0":
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-3.9.0.tgz#7e74cf1979ee65f9fd388145764b3e58f48da6c6"
@@ -3651,6 +3658,11 @@ fsevents@^1.0.0, fsevents@^1.2.2:
   dependencies:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
+
+fullpage.js@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/fullpage.js/-/fullpage.js-3.0.4.tgz#bb3eb1af7ecb5706866abf64ffc7b2535cec39b7"
+  integrity sha512-GWpud0Gvr8i4k3QySoajFevO18UBKMJ9znU3o4uaXZkKYqLtS8d1BSQoAARmYwYgBLOw3YrKAG+4LoaIokO1UA==
 
 function-bind@^1.1.1:
   version "1.1.1"
