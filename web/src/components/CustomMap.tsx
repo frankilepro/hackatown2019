@@ -23,6 +23,7 @@ export default class CustomMap extends React.Component<any> {
 
   public async componentWillMount() {
     filterStore.load();
+    
   }
 
   public render() {
