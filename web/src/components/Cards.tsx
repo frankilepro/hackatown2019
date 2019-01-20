@@ -1,7 +1,7 @@
 import { Card, CardActionArea, CardContent, Grid, Typography } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import * as React from 'react';
-import filterStore, { IFilter } from 'src/stores/FilterStore';
+import placeStore, { IFilter } from 'src/stores/PlaceStore';
 
 @observer
 class Cards extends React.Component {
@@ -11,7 +11,7 @@ class Cards extends React.Component {
         <Grid container={true} spacing={16}>
           <Grid item={true} xs={12}>
             <Grid container={true} justify="center" spacing={16}>
-              {filterStore.filters.map(value => (
+              {placeStore.filters.map(value => (
                 <Grid key={value.type} item={true}>
                   {this.generateGrid(value)}
                 </Grid>
@@ -41,7 +41,7 @@ class Cards extends React.Component {
   }
 
   private setFilter(type: number): void {
-    filterStore.applyFilter(type);
+    placeStore.applyFilter(type);
   }
 }
 
