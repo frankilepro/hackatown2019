@@ -33,10 +33,10 @@ class Cards extends React.Component {
     return (
       <Card>
         <CardActionArea
-          style={{ display: 'block', height: 150, width: 150, backgroundColor: filter.isChecked ? "#dfdfdf" : "white" }}
+          style={{ display: 'block', height: 100, width: 100, backgroundColor: filter.isChecked ? "#dfdfdf" : "white" }}
           onClick={() => this.setFilter(filter.type)}>
           <CardContent>
-            <Typography gutterBottom={true} variant="h5">
+            <Typography gutterBottom={true} variant="body1">
               {filter.name}
             </Typography>
             {filter.icon}

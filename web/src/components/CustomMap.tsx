@@ -35,7 +35,7 @@ export default class CustomMap extends React.Component<any> {
             const data = placeStore.data.filter(x => x.isChecked).map((x: any) => new window.google.maps.LatLng(x.lat, x.lng));
             const ObserverMap = observer(() => (
                 <div>
-                    <h1 style={{position: 'absolute', top: 0, right: 0}}>{data.length} crimes dans ce secteur</h1>
+                    <h1 style={{ position: 'absolute', top: 0 }}>{data.length} crimes dans ce secteur</h1>
                     <GoogleMap
                         defaultZoom={placeStore.zoom}
                         defaultCenter={placeStore.latLng}

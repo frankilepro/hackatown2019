@@ -54,7 +54,7 @@ class SearchBar extends React.Component {
             margin: 'auto',
             padding: '5vh',
             top: "80vh",
-            width: '300px',
+            width: '350px',
             // position: "absolute" as "absolute",
         }
 
