@@ -51,9 +51,11 @@ class SearchBar extends React.Component {
 
     public render() {
         const SearchBarCss = {
-            left: "10vw",
-            position: "absolute" as "absolute",
-            top: "1vh"
+            margin: 'auto',
+            padding: '5vh',
+            top: "80vh",
+            width: '300px',
+            // position: "absolute" as "absolute",
         }
 
         return (

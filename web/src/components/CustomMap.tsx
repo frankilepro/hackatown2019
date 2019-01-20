@@ -55,8 +55,8 @@ export default class CustomMap extends React.Component<any> {
             <div>
                 <GoogleMapExample
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMXNZX7SZ3MP5gVve_e0BRpod_G6ahpFU&v=3.exp&libraries=visualization"
-                    loadingElement={<div style={{ height: '60vh' }}>Loading</div>}
-                    containerElement={<div style={{ height: '60vh' }} />}
+                    loadingElement={<div style={{ height: '60vh', width: '90vw', margin: 'auto' }}>Loading...</div>}
+                    containerElement={<div style={{ height: '60vh', width: '90vw', margin: 'auto' }} />}
                     mapElement={<div style={{ height: '100%' }} />}
                 />
             </div>

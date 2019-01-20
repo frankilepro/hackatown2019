@@ -21,8 +21,8 @@ class App extends React.Component {
                         <ReactFullpage.Wrapper>
                             <Landing />
                             <div className="section">
-                                <SearchBar />
                                 <CustomMap />
+                                <SearchBar />
                                 <Cards />
                             </div>
                             <div className="section">
