@@ -5,6 +5,7 @@ import './App.css';
 import Cards from './components/Cards';
 import CustomMap from './components/CustomMap';
 import Landing from './components/Landing';
+import SearchBar from './components/SearchBar';
 
 class App extends React.Component {
 
@@ -20,6 +21,7 @@ class App extends React.Component {
                         <ReactFullpage.Wrapper>
                             <Landing />
                             <div className="section">
+                                <SearchBar />
                                 <CustomMap />
                                 <Cards />
                             </div>
