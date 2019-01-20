@@ -12,7 +12,7 @@ class Landing extends React.Component {
 
         const CustomCar = {
             bottom: '1vh',
-            'max-width': '40vw',
+            maxWidth: '40vw',
             position: 'absolute' as 'absolute',
         }
 
