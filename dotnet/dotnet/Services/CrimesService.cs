@@ -11,7 +11,7 @@ namespace dotnet.Services
 {
     public class CrimesService
     {
-        private List<Crime> _crimes;
+        public List<Crime> Crimes { get; }
 
         public CrimesService()
         {
@@ -19,13 +19,17 @@ namespace dotnet.Services
             {
                 using (var csv = new CsvReader(reader))
                 {
-                    _crimes = new List<Crime>();
+                    Crimes = new List<Crime>();
                     while (csv.Read())
                     {
                         try
                         {
                             var record = csv.GetRecord<Crime>();
-                            _crimes.Add(record);
+                            if (Math.Abs(record.Latitude - 1) > float.Epsilon && 
+                                Math.Abs(record.Longitude - 1) > float.Epsilon)
+                            {
+                                Crimes.Add(record);
+                            }
                         }
                         catch
                         {
@@ -35,11 +39,6 @@ namespace dotnet.Services
                     }
                 }
             }
-        }
-
-        public List<Crime> GetValues()
-        {
-            return _crimes;
         }
     }
 }

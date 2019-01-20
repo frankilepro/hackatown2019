@@ -19,11 +19,22 @@ namespace dotnet.Controllers
             _crimesService = crimesService;
         }
 
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Crime>> Get()
+        public ActionResult<IEnumerable<Position>> Get()
         {
-            return _crimesService.GetValues();
+            return _crimesService.Crimes
+                .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
+                .ToList();
+        }
+
+        // GET api/values
+        [HttpGet("{year}/{month}")]
+        public ActionResult<IEnumerable<Position>> Get(int year, int month)
+        {
+            return _crimesService.Crimes
+                .Where(x => x.Date.Year == year && x.Date.Month == month)
+                .Select(x => new Position { Lng = x.Longitude, Lat = x.Latitude })
+                .ToList();
         }
     }
 }

@@ -31,6 +31,15 @@ namespace dotnet
 
             var crimesService = new CrimesService();
             services.AddSingleton(crimesService);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", builder => builder
+                    .WithOrigins("http://localhost:3000/")
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +49,8 @@ namespace dotnet
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("default");
 
             app.UseMvc();
         }
