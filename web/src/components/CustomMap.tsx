@@ -2,67 +2,62 @@
 import * as React from 'react';
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
-import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import axios from "axios";
+import filterStore from 'src/stores/FilterStore';
 
 declare global {
-    interface Window { google: any; }
+  interface Window { google: any; }
 }
 window.google = window.google || {};
 
 @observer
-export default class CustomMap extends React.Component {
-    @observable public radius: number = Math.pow(12, 1.2);
-    @observable private data: any = [];
-    public refs: any;
-    private readonly montrealPos = { lat: 45.5043877, lng: -73.6150716 };
+export default class CustomMap extends React.Component<any> {
+  public refs: any;
+  private readonly montrealPos = { lat: 45.5043877, lng: -73.6150716 };
 
-    private onZoomChanged = () => {
-        this.radius = this.refs.getZoom();
-        console.log(`Zoom: ${this.refs.getZoom()}`);
-        console.log(`Radius: ${this.radius}`);
+  private onZoomChanged = () => {
+    filterStore.radius = this.refs.getZoom();
+    console.log(`Zoom: ${this.refs.getZoom()}`);
+    console.log(`Radius: ${filterStore.radius}`);
+  }
+
+  public async componentWillMount() {
+    filterStore.load();
+  }
+
+  public render() {
+    if (filterStore.data.length === 0) {
+      return (
+        <div style={{ height: '60vh' }}>Loading</div>
+      );
     }
 
-    public async componentWillMount() {
-        axios.defaults.baseURL = 'http://localhost:4000/api/';
-        const serverData = await axios.get(`crimes/2018`);
-        this.data = serverData.data;
-    }
+    const GoogleMapExample = withScriptjs(withGoogleMap(() => {
+      const data = filterStore.data.filter(x => x.isChecked).map((x: any) => new window.google.maps.LatLng(x.lat, x.lng));
+      const ObserverMap = observer(() => (
+        <GoogleMap
+          defaultZoom={12}
+          defaultCenter={this.montrealPos}
+          ref={(ref) => { this.refs = ref; }}
+          onZoomChanged={this.onZoomChanged}
+        >
+          <HeatmapLayer options={{ 'data': data, 'radius': filterStore.radius }} />
+        </GoogleMap>
+      ));
+      return (
+        <ObserverMap />
+      );
+    }));
 
-    public render() {
-        if (this.data.length === 0) {
-            return (
-                <div>Salut</div>
-            );
-        }
-
-        const GoogleMapExample = withScriptjs(withGoogleMap(() => {
-            const data = this.data.map((x: any) => new window.google.maps.LatLng(x.lat, x.lng));
-            const ObserverMap = observer(() => (
-                <GoogleMap
-                    defaultZoom={12}
-                    defaultCenter={this.montrealPos}
-                    ref={(ref) => { this.refs = ref; }}
-                    onZoomChanged={this.onZoomChanged}
-                >
-                    <HeatmapLayer options={{ 'data': data, 'radius': this.radius }} />
-                </GoogleMap>
-            ));
-            return (
-                <ObserverMap />
-            );
-        }));
-
-        return (
-            <div>
-                <GoogleMapExample
-                    googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMXNZX7SZ3MP5gVve_e0BRpod_G6ahpFU&v=3.exp&libraries=visualization"
-                    loadingElement={<div style={{ height: '100%' }} />}
-                    containerElement={<div style={{ height: '60vh' }} />}
-                    mapElement={<div style={{ height: '100%' }} />}
-                />
-            </div>
-        );
-    }
+    return (
+      <div>
+        <GoogleMapExample
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMXNZX7SZ3MP5gVve_e0BRpod_G6ahpFU&v=3.exp&libraries=visualization"
+          loadingElement={<div style={{ height: '60vh' }}>Loading</div>}
+          containerElement={<div style={{ height: '60vh' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+        />
+      </div>
+    );
+  }
 }
