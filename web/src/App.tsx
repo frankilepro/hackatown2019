@@ -4,6 +4,7 @@ import './App.css';
 
 import Cards from './components/Cards';
 import CustomMap from './components/CustomMap';
+import SearchBar from './components/SearchBar';
 
 @observer
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
       <div className="App">
         <CustomMap />
         <Cards />
+        <SearchBar />
       </div>
     );
   }
