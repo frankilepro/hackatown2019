@@ -30,7 +30,7 @@ const styles = {
 class SearchBar extends React.Component {
 
     public value = "";
-    
+
     public sendRequest = async (e: any) => {
         e.preventDefault();
         const apiKey: string = "AIzaSyBshCs4VcS5f-ILoa76OIeKXF8RT-5eaNQ";
@@ -47,9 +47,11 @@ class SearchBar extends React.Component {
 
     public render() {
         const SearchBarCss = {
-            left: "10vw",
-            position: "absolute" as "absolute",
-            top: "1vh"
+            margin: 'auto',
+            padding: '5vh',
+            top: "80vh",
+            width: '300px',
+            // position: "absolute" as "absolute",
         }
 
         return (

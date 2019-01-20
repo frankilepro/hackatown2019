@@ -5,10 +5,16 @@ import filterStore, { IFilter } from 'src/stores/FilterStore';
 
 @observer
 class Cards extends React.Component {
+
   public render() {
+    const CustomGrid = {
+      padding: '1vh'
+    }
+
+
     return (
       <div>
-        <Grid container={true} spacing={16}>
+        <Grid container={true} spacing={16} style={CustomGrid}>
           <Grid item={true} xs={12}>
             <Grid container={true} justify="center" spacing={16}>
               {filterStore.filters.map(value => (
@@ -19,7 +25,7 @@ class Cards extends React.Component {
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </div >
     );
   }
 
