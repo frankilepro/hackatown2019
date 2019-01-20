@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 
+import Cards from './components/Cards';
 import CustomMap from './components/CustomMap';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
           containerElement={<div style={{ height: '100vh' }} />}
           mapElement={<div style={{ height: '100%' }} />}
         />
+        <Cards />
       </div>
     );
   }
