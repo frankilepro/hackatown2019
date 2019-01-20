@@ -26,7 +26,7 @@ class App extends React.Component {
                                 <Cards />
                             </div>
                             <div className="section">
-                                <h1>text2</h1>
+                                <h1>@Couloulou</h1>
                             </div>
                         </ReactFullpage.Wrapper>
                     )}
