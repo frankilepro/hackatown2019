@@ -69,7 +69,7 @@ class PlaceStore {
   }
 
   public isWithinRadius(latLngA: google.maps.LatLng, itemLatLngB: Item): boolean {
-    return (this.calculateDistance(latLngA.lng(), latLngA.lat(), itemLatLngB.lng, itemLatLngB.lat) < 1000);
+    return (this.calculateDistance(latLngA.lng(), latLngA.lat(), itemLatLngB.lng, itemLatLngB.lat) < 500);
   }
 
   public calculateDistance(lng1: number, lat1: number, lng2: number, lat2: number): number {

@@ -31,6 +31,14 @@ class App extends React.Component {
                         </ReactFullpage.Wrapper>
                     )}
                 />
+                <div style={{
+                    backgroundColor: "#EDEDED",
+                    borderTop: "2px solid black",
+                    bottom: 0,
+                    padding: '5px',
+                    position: "absolute",
+                    width: "100vw",
+                }}>@Couloulou</div>
             </div>
         );
     }
