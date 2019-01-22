@@ -33,7 +33,7 @@ class App extends React.Component {
                 />
                 <div style={{
                     backgroundColor: "#EDEDED",
-                    borderTop: "2px solid black",
+                    // borderTop: "2px solid black",
                     bottom: 0,
                     padding: '5px',
                     position: "absolute",
